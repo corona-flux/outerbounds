@@ -15,6 +15,7 @@ import {
   NumberInput,
   Slider,
   Stack,
+  TextArea,
 } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
@@ -100,6 +101,56 @@ export function FeatureColorInput(props: FeatureValueProps<string>) {
     </Button>
   );
 }
+
+/* OUTERBOUNDS ADDITION BEGIN: tricolor inputs */
+export function FeatureTriColorInput(props: FeatureValueProps<string[]>) {
+  const { act } = useBackend<PreferencesMenuData>();
+  const buttonFromValue = (index) => {
+    return (
+      <Stack.Item>
+        <Button
+          onClick={() => {
+            act('set_tricolor_preference', {
+              preference: props.featureId,
+              value: index + 1,
+            });
+          }}
+        >
+          <Stack align="center" fill>
+            <Stack.Item>
+              <Box
+                style={{
+                  background: props.value[index].startsWith('#')
+                    ? props.value[index]
+                    : `#${props.value[index]}`,
+                  border: '2px solid white',
+                  boxSizing: 'content-box',
+                  height: '11px',
+                  width: '11px',
+                  ...(props.shrink
+                    ? {
+                        margin: '1px',
+                      }
+                    : {}),
+                }}
+              />
+            </Stack.Item>
+
+            {!props.shrink && <Stack.Item>Change</Stack.Item>}
+          </Stack>
+        </Button>
+      </Stack.Item>
+    );
+  };
+  return (
+    <Stack align="center" fill>
+      {buttonFromValue(0)}
+      {buttonFromValue(1)}
+      {buttonFromValue(2)}
+    </Stack>
+  );
+}
+/* OUTERBOUNDS ADDITION END */
 
 export type FeatureToggle = Feature<BooleanLike, boolean>;
 
@@ -265,3 +316,22 @@ export function FeatureShortTextInput(
     />
   );
 }
+
+// OUTERBOUNDS ADDITION
+export const FeatureTextInput = (
+  props: FeatureValueProps<string, string, FeatureShortTextData>,
+) => {
+  if (!props.serverData) {
+    return <Box>Loading...</Box>;
+  }
+
+  return (
+    <TextArea
+      height="100px"
+      width="100%"
+      value={props.value}
+      maxLength={props.serverData.maximum_length}
+      onBlur={(value) => props.handleSetValue(value)}
+    />
+  );
+};
