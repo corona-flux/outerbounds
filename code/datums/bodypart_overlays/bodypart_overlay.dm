@@ -4,7 +4,16 @@
 	/// Sometimes we need multiple layers, for like the back, middle and front of the person (EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
 	var/layers
 	/// List of all possible layers. Used for looping through in drawing
-	var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND)
+	//var/static/list/all_layers = list(EXTERNAL_FRONT, EXTERNAL_ADJACENT, EXTERNAL_BEHIND) /// DOPPLER SHIFT REMOVAL
+	/// DOPPLER SHIFT ADDITION BEGIN
+	var/static/list/all_layers = list(
+		EXTERNAL_FRONT,
+		EXTERNAL_ADJACENT,
+		EXTERNAL_BEHIND,
+		EXTERNAL_HAND,
+		EXTERNAL_BODY_FRONT_UNDER_CLOTHES,
+	)
+	/// DOPPLER SHIFT ADDITION END
 	/// Key of the icon states of all the sprite_datums for easy caching
 	var/cache_key = ""
 	/// Whether the overlay blocks emissive light
@@ -79,6 +88,12 @@
 			return -BODY_ADJ_LAYER
 		if(EXTERNAL_FRONT)
 			return -BODY_FRONT_LAYER
+		/// DOPPLER SHIFT ADDITION BEGIN
+		if(EXTERNAL_HAND)
+			return -BODY_HAND_LAYER
+		if(EXTERNAL_BODY_FRONT_UNDER_CLOTHES)
+			return -BODY_FRONT_UNDER_CLOTHES_LAYER
+		/// DOPPLER SHIFT ADDITION END
 
 ///Check whether we can draw the overlays. You generally don't want lizard snouts to draw over an EVA suit
 /datum/bodypart_overlay/proc/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner, mob/living/carbon/owner, is_husked = FALSE)

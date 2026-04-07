@@ -759,14 +759,30 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 #define FRONT_MUTATIONS_LAYER 31
 /// Damage indicators (cuts and burns)
 #define DAMAGE_LAYER 30
+/// DOPPLER SHIFT ADDITION BEGIN
+/// Just below clothing layer
+#define UNDER_UNIFORM_LAYER 29.75
+/// Bra and socks
+#define BRA_SOCKS_LAYER 29.5
+/// Underwear and undershirt
+#define UNDERWEAR_UNDERSHIRT 29.25
+/// DOPPLER SHIFT ADDITION END
 /// Jumpsuit clothing layer
 #define UNIFORM_LAYER 29
+/// DOPPLER SHIFT ADDITION BEGIN
+#define BANDAGE_LAYER 28.5
+/// This layer is used for things that shouldn't be over clothes, but should be over mutations
+#define BODY_FRONT_UNDER_CLOTHES_LAYER 28.25
+/// DOPPLER SHIFT ADDITION END
 /// ID card layer
 #define ID_LAYER 28
 /// ID card layer (might be deprecated)
 #define ID_CARD_LAYER 27
 /// Layer for bodyparts that should appear above every other bodypart - Currently only used for hands
 #define BODYPARTS_HIGH_LAYER 26
+/// DOPPLER SHIFT ADDITION BEGIN - For hand markings :3c
+#define BODY_HAND_LAYER 25.5
+/// DOPPLER SHIFT ADDITION END
 /// Gloves layer
 #define GLOVES_LAYER 25
 /// Shoes layer
