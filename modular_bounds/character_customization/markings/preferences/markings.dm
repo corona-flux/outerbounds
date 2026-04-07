@@ -416,3 +416,8 @@
 /datum/preference/color/markings/markings_r_leg3
 	savefile_key = "markings_r_leg_color3"
 	markingval = MARKING_RLEG3
+
+/datum/preference/color/markings/markings_r_leg3/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+	return preferences.read_preference(/datum/preference/choiced/markings/markings_r_leg2) != SPRITE_ACCESSORY_NONE
