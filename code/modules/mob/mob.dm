@@ -1191,6 +1191,12 @@
 				// Only update if this player is a target
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
+		// OUTERBOUNDS EDIT ADDITION BEGIN - Update the mob chat color list, removing the old name and adding the new name
+		if(client)
+			GLOB.chat_colors_by_mob_name -= oldname
+	if(client)
+		GLOB.chat_colors_by_mob_name[name] = list(chat_color, chat_color_darkened)
+	// OUTERBOUNDS EDIT ADDITION END
 
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 

@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Ensures that we always load the last used save, QOL
 	var/default_slot = 1
 	/// The maximum number of slots we're allowed to contain
-	var/max_save_slots = 3
+	var/max_save_slots = 10 /// OUTERBOUNDS EDIT - More character slots - Originally: 3
 
 	/// Bitflags for communications that are muted
 	var/muted = NONE
@@ -171,6 +171,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	data["active_slot"] = default_slot
 
+	data["preview_selection"] = preview_pref // OUTERBOUNDS EDIT ADDITION
+
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		data += preference_middleware.get_ui_data(user)
 
@@ -178,6 +180,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/ui_static_data(mob/user)
 	var/list/data = list()
+
+	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED) // OUTERBOUNDS ADDITION
 
 	data["character_profiles"] = create_character_profiles()
 
@@ -270,6 +274,45 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				return FALSE
 
 			return TRUE
+		/// OUTERBOUNDS ADDITION BEGIN - Preview prefs and tricolor preferences
+		if("update_preview")
+			preview_pref = params["updated_preview"]
+			character_preview_view.update_body()
+			return TRUE
+		if ("set_tricolor_preference")
+			var/requested_preference_key = params["preference"]
+			var/index_key = params["value"]
+
+			var/datum/preference/requested_preference = GLOB.preference_entries_by_key[requested_preference_key]
+			if (isnull(requested_preference))
+				return FALSE
+
+			if (!istype(requested_preference, /datum/preference/tri_color))
+				return FALSE
+
+			var/default_value_list = read_preference(requested_preference.type)
+			if (!islist(default_value_list))
+				return FALSE
+			var/default_value = default_value_list[index_key]
+
+			// Yielding
+			var/new_color = input(
+				usr,
+				"Select new color",
+				null,
+				default_value || COLOR_WHITE,
+			) as color | null
+
+			if (!new_color)
+				return FALSE
+
+			default_value_list[index_key] = new_color
+
+			if (!update_preference(requested_preference, default_value_list))
+				return FALSE
+
+			return TRUE
+		/// DOPPLER SHIFT ADDITION END
 
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		var/delegation = preference_middleware.action_delegations[action]
@@ -581,4 +624,4 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	unlock_content = !!byond_member
 	if(unlock_content)
-		max_save_slots = 8
+		max_save_slots = 20 // OUTERBOUNDS EDIT - More save slots - Originally: 8
