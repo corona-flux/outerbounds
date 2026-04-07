@@ -6884,4 +6884,12 @@
 #include "interface\fonts\spess_font.dm"
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
+#include "modular_bounds\character_customization\markings\_defines.dm"
+#include "modular_bounds\character_customization\markings\_markings.dm"
+#include "modular_bounds\character_customization\markings\markings_preferences.dm"
+#include "modular_bounds\character_customization\markings\body_markings\other.dm"
+#include "modular_bounds\character_customization\markings\body_markings\secondary.dm"
+#include "modular_bounds\character_customization\markings\body_markings\tattoos.dm"
+#include "modular_bounds\character_customization\markings\body_markings\tertiary.dm"
+#include "modular_bounds\character_customization\markings\preferences\markings.dm"
 // END_INCLUDE
