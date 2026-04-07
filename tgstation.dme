@@ -6892,6 +6892,8 @@
 #include "modular_bounds\character_customization\preferences_setup.dm"
 #include "modular_bounds\character_customization\tri_color_prefs.dm"
 #include "modular_bounds\character_customization\assorted\chat_color.dm"
+#include "modular_bounds\character_customization\assorted\height_scaling\icons.dm"
+#include "modular_bounds\character_customization\assorted\height_scaling\preferences.dm"
 #include "modular_bounds\character_customization\flavortext_and_records\defines.dm"
 #include "modular_bounds\character_customization\flavortext_and_records\examine.dm"
 #include "modular_bounds\character_customization\flavortext_and_records\flavor_text.dm"
