@@ -425,6 +425,7 @@
 #include "code\__DEFINES\traits\macros.dm"
 #include "code\__DEFINES\traits\sources.dm"
 #include "code\__DEFINES\~bounds_defines\language.dm"
+#include "code\__DEFINES\~bounds_defines\loadout.dm"
 #include "code\__DEFINES\~bounds_defines\preferences.dm"
 #include "code\__DEFINES\~bounds_defines\text.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
@@ -6909,4 +6910,7 @@
 #include "modular_bounds\languages\code\language menu\client_languages.dm"
 #include "modular_bounds\languages\code\language menu\language_holder.dm"
 #include "modular_bounds\languages\code\language menu\language_preferences.dm"
+#include "modular_bounds\loadout\examine.dm"
+#include "modular_bounds\loadout\loadout_checkers.dm"
+#include "modular_bounds\loadout\preferences.dm"
 // END_INCLUDE

@@ -83,14 +83,13 @@
 		for(var/language in lang_holder.spoken_languages)
 			LAZYSET(preferences.languages[language], LANGUAGE_FLAGS, LANGUAGE_SPOKEN)
 
-	if(language.secret)
-			continue
-
 	var/list/selected_languages = list()
 	var/list/unselected_languages = list()
 
 	for (var/language_name in GLOB.all_languages_by_priority)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
+		if(language.secret)
+			continue
 		if(preferences.languages[language.type])
 			var/partial_knowledge = 100
 			if (islist(preferences.languages[language.type]) && !isnull(preferences.languages[language.type][LANGUAGE_KNOWLEDGE]))
