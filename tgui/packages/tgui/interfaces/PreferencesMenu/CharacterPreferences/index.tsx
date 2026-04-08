@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Button, Stack } from 'tgui-core/components';
+import {
+  Button,
+  Dropdown,
+  Flex,
+  Stack,
+} from 'tgui-core/components'; /* OUTERBOUNDS EDIT: Adds in Dropdown and Flex */
 import { exhaustiveCheck } from 'tgui-core/exhaustive';
 
 import { PageButton } from '../components/PageButton';
@@ -35,21 +40,25 @@ function CharacterProfiles(props: ProfileProps) {
   const { activeSlot, onClick, profiles } = props;
 
   return (
-    <Stack justify="center" wrap>
-      {profiles.map((profile, slot) => (
-        <Stack.Item key={slot} mb={1}>
-          <Button
-            selected={slot === activeSlot}
-            onClick={() => {
-              onClick(slot);
-            }}
-            fluid
-          >
-            {profile ?? 'New Character'}
-          </Button>
-        </Stack.Item>
-      ))}
-    </Stack>
+    <Flex /* OUTERBOUNDS EDIT START: Dropdown instead of using buttons */
+      align="center"
+      justify="center"
+    >
+      <Flex.Item width="25%">
+        <Dropdown
+          width="100%"
+          selected={activeSlot as unknown as string}
+          displayText={profiles[activeSlot]}
+          options={profiles.map((profile, slot) => ({
+            value: slot,
+            displayText: profile ?? 'New Character',
+          }))}
+          onSelected={(slot) => {
+            onClick(slot);
+          }}
+        />
+      </Flex.Item>
+    </Flex> /* OUTERBOUNDS EDIT END */
   );
 }
 
@@ -113,11 +122,11 @@ export function CharacterPreferenceWindow(props) {
           profiles={data.character_profiles}
         />
       </Stack.Item>
-      {!data.content_unlocked && (
+      {/*{!data.content_unlocked && ( // OUTERBOUNDS EDIT - Hide byond premium banner
         <Stack.Item align="center">
           Buy BYOND premium for more slots!
         </Stack.Item>
-      )}
+      )}*/}
       <Stack.Divider />
       <Stack.Item>
         <Stack fill>
