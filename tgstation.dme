@@ -6907,6 +6907,7 @@
 #include "modular_bounds\character_customization\markings\body_markings\tattoos.dm"
 #include "modular_bounds\character_customization\markings\body_markings\tertiary.dm"
 #include "modular_bounds\character_customization\markings\preferences\markings.dm"
+#include "modular_bounds\keybinds\key_changes.dm"
 #include "modular_bounds\languages\code\language_datums.dm"
 #include "modular_bounds\languages\code\language menu\_language.dm"
 #include "modular_bounds\languages\code\language menu\client_languages.dm"
