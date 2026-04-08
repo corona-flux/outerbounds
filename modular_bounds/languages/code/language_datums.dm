@@ -9,7 +9,7 @@
 	return langs
 
 /**
- * DOPPLER LANGUAGES
+ * OUTERBOUNDS LANGUAGES
  * default_priority here is also used to pick what order these appear in the ingame language menu.
  * 100-90 - Common 4CA languages.
  * 89-70 - Common other languages.

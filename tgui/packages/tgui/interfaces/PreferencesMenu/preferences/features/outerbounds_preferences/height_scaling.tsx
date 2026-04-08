@@ -1,4 +1,4 @@
-// THIS IS A DOPPLER SECTOR UI FILE
+// THIS IS AN OUTERBOUNDS UI FILE
 import { FeatureChoiced } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 

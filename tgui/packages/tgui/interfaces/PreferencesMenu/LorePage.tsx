@@ -6,8 +6,8 @@ import { PreferencesMenuData } from './types';
 
 export const LorePage = () => {
   const { act, data } = useBackend<PreferencesMenuData>();
-  const dopplerLorePreferences = {
-    ...data.character_preferences.doppler_lore,
+  const outerboundsLorePreferences = {
+    ...data.character_preferences.outerbounds_lore,
   };
   return (
     <Box className="PreferencesMenu__Lore">
@@ -26,39 +26,39 @@ export const LorePage = () => {
           <Section title="Character Details">
             <PreferenceSingle
               pref_key="age"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
             <PreferenceSingle
               pref_key="age_chronological"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
             <PreferenceSingle
               pref_key="flavor_short_desc"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
             <PreferenceSingle
               pref_key="flavor_extended_desc"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
             <PreferenceSingle
               pref_key="headshot_url"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
           </Section>
           <Section title="Species">
             <PreferenceSingle
               pref_key="custom_species_name"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
             <PreferenceSingle
               pref_key="custom_species_desc"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
           </Section>
           <Section title="OOC">
             <PreferenceSingle
               pref_key="ooc_notes"
-              preferences={dopplerLorePreferences}
+              preferences={outerboundsLorePreferences}
             />
           </Section>
         </LabeledList>

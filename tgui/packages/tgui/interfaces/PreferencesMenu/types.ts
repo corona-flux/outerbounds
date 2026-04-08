@@ -93,13 +93,13 @@ export type Quirk = {
   customization_options?: string[];
 };
 
-// DOPPLER EDIT START
+// OUTERBOUNDS EDIT START
 export type Language = {
   description: string;
   name: string;
   icon: string;
 };
-// DOPPLER EDIT END
+// OUTERBOUNDS EDIT END
 
 export type QuirkInfo = {
   max_positive_quirks: number;
@@ -157,10 +157,10 @@ export type CharacterPreferencesData = {
     random_body: RandomSetting;
     [otherKey: string]: unknown;
   };
-  doppler_lore: Record<string, unknown> /* DOPPLER EDIT ADDITION */;
+  outerbounds_lore: Record<string, unknown> /* OUTERBOUNDS EDIT ADDITION */;
   secondary_features: Record<string, unknown>;
   supplemental_features: Record<string, unknown>;
-  markings: Record<string, unknown> /* DOPPLER EDIT ADDITION */;
+  markings: Record<string, unknown> /* OUTERBOUNDS EDIT ADDITION */;
   manually_rendered_features: Record<string, string>;
 
   names: Record<string, string>;
@@ -195,11 +195,11 @@ export type PreferencesMenuData = {
   >;
   job_preferences: Record<string, JobPriority>;
 
-  // DOPPLER EDIT
+  // OUTERBOUNDS EDIT
   selected_languages: Language[];
   unselected_languages: Language[];
   total_language_points: number;
-  // DOPPLER EDIT END
+  // OUTERBOUNDS EDIT END
 
   keybindings: Record<string, string[]>;
   overflow_role: string;

@@ -11,8 +11,8 @@ import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
 import { QuirkPersonalityPage } from './QuirksPage';
 import { SpeciesPage } from './SpeciesPage';
-import { LanguagesPage } from '../LanguagesMenu'; /* DOPPLER EDIT ADDITION */
-import { LorePage } from '../LorePage'; /* DOPPLER EDIT ADDITION */
+import { LanguagesPage } from '../LanguagesMenu'; /* OUTERBOUNDS EDIT ADDITION */
+import { LorePage } from '../LorePage'; /* OUTERBOUNDS EDIT ADDITION */
 
 enum Page {
   Antags,
@@ -21,8 +21,8 @@ enum Page {
   Species,
   Quirks,
   Loadout,
-  Languages /* DOPPLER EDIT ADDITION */,
-  Lore /* DOPPLER EDIT ADDITION */,
+  Languages /* OUTERBOUNDS EDIT ADDITION */,
+  Lore /* OUTERBOUNDS EDIT ADDITION */,
 }
 
 type ProfileProps = {
@@ -87,14 +87,14 @@ export function CharacterPreferenceWindow(props) {
       pageContents = <LoadoutPage />;
       break;
 
-    // DOPPLER EDIT START
+    // OUTERBOUNDS EDIT START
     case Page.Lore:
       pageContents = <LorePage />;
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;
       break;
-    // DOPPLER EDIT END
+    // OUTERBOUNDS EDIT END
 
     default:
       exhaustiveCheck(currentPage);
@@ -132,7 +132,7 @@ export function CharacterPreferenceWindow(props) {
             </PageButton>
           </Stack.Item>
 
-          {/* // DOPPLER EDIT ADDITION*/}
+          {/* // OUTERBOUNDS EDIT ADDITION*/}
           <Stack.Item grow>
             <PageButton
               currentPage={currentPage}
@@ -142,7 +142,7 @@ export function CharacterPreferenceWindow(props) {
               Lore
             </PageButton>
           </Stack.Item>
-          {/* // DOPPLER EDIT ADDITION END*/}
+          {/* // OUTERBOUNDS EDIT ADDITION END*/}
 
           <Stack.Item grow>
             <PageButton
@@ -168,7 +168,7 @@ export function CharacterPreferenceWindow(props) {
             </PageButton>
           </Stack.Item>
 
-          {/* // DOPPLER EDIT ADDITION*/}
+          {/* // OUTERBOUNDS EDIT ADDITION*/}
           <Stack.Item grow>
             <PageButton
               currentPage={currentPage}
@@ -178,7 +178,7 @@ export function CharacterPreferenceWindow(props) {
               Languages
             </PageButton>
           </Stack.Item>
-          {/* // DOPPLER EDIT ADDITION END*/}
+          {/* // OUTERBOUNDS EDIT ADDITION END*/}
 
           {/*<Stack.Item grow>
             <PageButton

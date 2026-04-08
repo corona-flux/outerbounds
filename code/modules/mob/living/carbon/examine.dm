@@ -17,7 +17,7 @@
 	var/t_is = p_are()
 
 	. = list()
-	// DOPPLER EDIT BEGIN - flavor text
+	// OUTERBOUNDS EDIT BEGIN - flavor text
 	if (dna.features["flavor_short_desc"])
 		. += "[dna.features["flavor_short_desc"]] [get_extended_description_href("\[👁️\]")]"
 	ADD_NEWLINE_IF_NECESSARY(.)
@@ -25,7 +25,7 @@
 		. += "[t_He] [t_is] [prefix_a_or_an(dna.features["custom_species_name"])] <em>[get_species_description_href(dna.features["custom_species_name"])]</em> of [LOWER_TEXT(dna.species.name)] physiology."
 	else
 		. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [get_species_description_href(dna.species.name)]."
-	// DOPPLER EDIT END
+	// OUTERBOUNDS EDIT END
 	. += get_clothing_examine_info(user)
 	// give us some space between clothing examine and the rest
 	ADD_NEWLINE_IF_NECESSARY(.)
@@ -364,7 +364,7 @@
 	return final_descriptions
 
 /// Coolects examine information about the mob's clothing and equipment
-// DOPPLER EDIT BEGIN - see altered loadout items
+// OUTERBOUNDS EDIT BEGIN - see altered loadout items
 /mob/living/carbon/proc/get_clothing_examine_info(mob/living/user)
 	. = list()
 	var/t_He = p_They()
@@ -506,7 +506,7 @@
 	//shoes
 	if(shoes && !(obscured_slots & HIDESHOES)  && !HAS_TRAIT(shoes, TRAIT_EXAMINE_SKIP))
 		. += "[t_He] [t_is] wearing [shoes.examine_title_worn(user)] on [t_his] feet."
-// DOPPLER EDIT END
+// OUTERBOUNDS EDIT END
 
 /// Collects info displayed about any HUDs the user has when examining src
 /mob/living/carbon/proc/get_hud_examine_info(mob/living/user)

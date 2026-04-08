@@ -1,4 +1,4 @@
-// THIS IS A DOPPLER SHIFT UI FILE
+// THIS IS AN OUTERBOUNDS UI FILE
 import { Feature } from '../base';
 import { FeatureDropdownInput } from '../dropdowns';
 

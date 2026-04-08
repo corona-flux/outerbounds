@@ -1,5 +1,5 @@
 /datum/preference/text/headshot
-	category = PREFERENCE_CATEGORY_DOPPLER_LORE
+	category = PREFERENCE_CATEGORY_OUTERBOUNDS_LORE
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "headshot_url"
 	maximum_value_length = MAX_MESSAGE_LEN

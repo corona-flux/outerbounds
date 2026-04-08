@@ -64,6 +64,11 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 /datum/loadout_item/New(category)
 	src.category = category
 
+	// OUTERBOUNDS ADDITION START - ALL LOADOUT ITEMS RENAMABLE
+	if(!(loadout_flags & LOADOUT_FLAG_ALLOW_NAMING))
+		loadout_flags |= LOADOUT_FLAG_ALLOW_NAMING
+	// OUTERBOUNDS ADDITION END
+
 	if(!(loadout_flags & LOADOUT_FLAG_BLOCK_GREYSCALING) && is_greyscale_item())
 		loadout_flags |= LOADOUT_FLAG_GREYSCALING_ALLOWED
 
@@ -274,13 +279,13 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 		equipped_item.name = trim(item_details[INFO_NAMED], PREVENT_CHARACTER_TRIM_LOSS(MAX_NAME_LEN))
 		ADD_TRAIT(equipped_item, TRAIT_WAS_RENAMED, "Loadout")
 
-	// DOPPLER EDIT ADDITION START - Loadout item descriptions
+	// OUTERBOUNDS ADDITION START - Loadout item descriptions
 	if((loadout_flags & LOADOUT_FLAG_ALLOW_NAMING) && item_details?[INFO_DESCRIBED] && !visuals_only)
 		equipped_item.desc = item_details[INFO_DESCRIBED]
 		ADD_TRAIT(equipped_item, TRAIT_WAS_RENAMED, "Loadout")
 		equipped_item.on_loadout_custom_described()
 		equipped_item.AddElement(/datum/element/examined_when_worn)
-	// DOPPLER EDIT ADDITION END
+	// OUTERBOUNDS ADDITION END
 
 	if(reskin_datum && item_details?[INFO_RESKIN])
 		var/skin_chosen = item_details[INFO_RESKIN]

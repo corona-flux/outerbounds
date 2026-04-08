@@ -8,8 +8,8 @@ GLOBAL_LIST_INIT(chat_colors_by_mob_name, list(
 /// Maximum length of the extended character description
 #define MAX_FLAVOR_EXTENDED_DESC_LEN 4096
 
-/// Preference category for doppler lore items
-#define PREFERENCE_CATEGORY_DOPPLER_LORE "doppler_lore"
+/// Preference category for outerbounds lore items
+#define PREFERENCE_CATEGORY_OUTERBOUNDS_LORE "outerbounds_lore"
 
 /// View with your job clothing on + loadout
 #define PREVIEW_PREF_JOB "Job"

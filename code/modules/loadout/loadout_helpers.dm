@@ -27,11 +27,11 @@
 	else
 		CRASH("Invalid outfit passed to equip_outfit_and_loadout ([outfit])")
 
-	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference) // DOPPLER ADDITION: loadout preferences
+	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference) // OUTERBOUNDS ADDITION: loadout preferences
 
 	var/list/item_details = preference_source.read_preference(/datum/preference/loadout)
 	var/list/loadout_datums = loadout_list_to_datums(item_details)
-	/* DOPPLER EDIT START - Original:
+	/* OUTERBOUNDS EDIT START - Original:
 	// Slap our things into the outfit given
 	for(var/datum/loadout_item/item as anything in loadout_datums)
 		item.insert_path_into_outfit(equipped_outfit, src, visuals_only)
@@ -60,8 +60,8 @@
 		new_contents = get_all_gear(INCLUDE_PROSTHETICS|INCLUDE_ABSTRACT|INCLUDE_ACCESSORIES)
 
 	// Handle any snowflake on_equips
-	// DOPPLER EDIT END
-	// DOPPLER EDIT REMOVAL - SEE ABOVE - var/list/new_contents = get_all_gear(INCLUDE_PROSTHETICS|INCLUDE_ABSTRACT|INCLUDE_ACCESSORIES)
+	// OUTERBOUNDS EDIT END
+	// OUTERBOUNDS REMOVAL - SEE ABOVE - var/list/new_contents = get_all_gear(INCLUDE_PROSTHETICS|INCLUDE_ABSTRACT|INCLUDE_ACCESSORIES)
 	var/update = NONE
 	for(var/datum/loadout_item/item as anything in loadout_datums)
 		update |= item.on_equip_item(
