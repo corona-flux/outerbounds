@@ -6915,4 +6915,5 @@
 #include "modular_bounds\loadout\examine.dm"
 #include "modular_bounds\loadout\loadout_checkers.dm"
 #include "modular_bounds\loadout\preferences.dm"
+#include "modular_bounds\visual_management\hide_limbs.dm"
 // END_INCLUDE

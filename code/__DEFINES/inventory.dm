@@ -109,6 +109,12 @@ DEFINE_BITFIELD(no_equip_flags, list(
 #define HIDEBELT (1<<14)
 ///hides antennae
 #define HIDEANTENNAE (1<<15)
+// OUTERBOUNDS ADDITION BEGIN - Flags for hiding the arms and legs
+/// Hides the arms
+#define HIDEARMS (1 << 16)
+/// Hides the legs
+#define HIDELEGS (1 << 17)
+// OUTERBOUND EDIT END
 
 //Bitflags for hair appendage zones
 #define HAIR_APPENDAGE_FRONT (1<<0)
