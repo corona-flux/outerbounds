@@ -11,4 +11,4 @@
 	var/datum/medical_condition/new_condition = new condition()
 	medical_conditions += new_condition
 	new_condition.on_application(src, target_body_zone ? get_bodypart(target_body_zone) : null)
-	medical_conditions[new_condition] = target_body_zone
+	medical_conditions[new_condition] = target_body_zone ? target_body_zone : CONDITION_FULL_BODY

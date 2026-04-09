@@ -40,18 +40,18 @@
 		natural_cure_timer = addtimer(CALLBACK(src, PROC_REF(on_removal)), natural_cure_time, TIMER_STOPPABLE | TIMER_UNIQUE)
 
 /// What to do to the mob and or the limb on removal
-/datum/medical_condition/proc/on_removal(mob/living/carbon/victim, obj/item/bodypart/target_bodypart)
+/datum/medical_condition/proc/on_removal()
 	SHOULD_CALL_PARENT(TRUE)
-	if(victim)
-		victim.medical_conditions -= src
+	if(owner)
+		owner.medical_conditions -= src
 	qdel(src)
 
 /// Connected to life processing to the owner mob, for condition progression, or constant effects
-/datum/medical_condition/proc/owner_process(mob/living/carbon/victim)
+/datum/medical_condition/proc/owner_process()
 	SHOULD_CALL_PARENT(TRUE)
-	if(!victim) // ?? Bad things are happening
+	if(!owner) // ?? Bad things are happening
 		on_removal()
 		return
-	if(!victim.get_bodypart(victim.medical_conditions[src]))
+	if(!owner.get_bodypart(owner.medical_conditions[src]))
 		on_removal()
 		return
