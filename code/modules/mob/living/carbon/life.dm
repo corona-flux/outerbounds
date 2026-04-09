@@ -1,4 +1,4 @@
-/mob/living/carbon/Life(seconds_per_tick = SSMOBS_DT)
+/* /mob/living/carbon/Life(seconds_per_tick = SSMOBS_DT) // OUTERBOUNDS EDIT - MOVED TO modular_bounds/datumed/hooks.dm
 	if(HAS_TRAIT(src, TRAIT_NO_TRANSFORM))
 		return
 
@@ -35,7 +35,7 @@
 		handle_bodyparts(seconds_per_tick)
 
 	if(stat != DEAD)
-		return TRUE
+		return TRUE */
 
 ///////////////
 // BREATHING //

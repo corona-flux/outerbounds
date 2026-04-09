@@ -675,7 +675,7 @@
 			REMOVE_TRAIT(src, TRAIT_SIXTHSENSE, "near-death")
 
 
-/mob/living/carbon/update_stat()
+/* /mob/living/carbon/update_stat() // OUTERBOUNDS EDIT - HANDLED IN modular_bounds/datumed/hooks.dm
 	if(HAS_TRAIT(src, TRAIT_GODMODE))
 		return
 	if(stat != DEAD)
@@ -695,7 +695,7 @@
 	update_damage_hud()
 	update_health_hud()
 	update_stamina_hud()
-	med_hud_set_status()
+	med_hud_set_status() */
 
 
 //called when we get cuffed/uncuffed

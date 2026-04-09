@@ -1,0 +1,21 @@
+/mob/living/carbon/update_stat()
+	if(HAS_TRAIT(src, TRAIT_GODMODE))
+		return
+	if(stat != DEAD)
+		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
+			death()
+			return
+		if(HAS_TRAIT_FROM(src, TRAIT_DISSECTED, AUTOPSY_TRAIT))
+			REMOVE_TRAIT(src, TRAIT_DISSECTED, AUTOPSY_TRAIT)
+		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
+			set_stat(HARD_CRIT)
+		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+			set_stat(UNCONSCIOUS)
+		else if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
+			set_stat(SOFT_CRIT)
+		else
+			set_stat(CONSCIOUS)
+	update_damage_hud()
+	update_health_hud()
+	update_stamina_hud()
+	med_hud_set_status()
