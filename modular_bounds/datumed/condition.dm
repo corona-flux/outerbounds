@@ -8,6 +8,8 @@
 	var/treatment_text = null
 	/// If the condition should only last a certain amount of time, how long? In SECONDS
 	var/natural_cure_time = null
+	/// Timer for the condition naturally going away, can be modified
+	var/natural_cure_timer = null
 	/// Generic "severity" tracker, for use by subtypes for whatever they wish
 	var/severity = null
 	/// The owner of this condition
@@ -27,15 +29,29 @@
 /// What to do to the mob and or the limb on application
 /datum/medical_condition/proc/on_application(mob/living/carbon/victim, obj/item/bodypart/target_bodypart)
 	SHOULD_CALL_PARENT(TRUE)
+	if(!victim || (!limb_independence && !target_bodypart))
+		message_admins("Condition \"[src.name]\" has no target, or needs a target bodypart and didn't get one!")
+		qdel(src) // ?? How did you do that
+		return
 	owner = victim
 	if(target_bodypart)
 		owner_bodypart = target_bodypart
+	if(natural_cure_time)
+		natural_cure_timer = addtimer(CALLBACK(src, PROC_REF(on_removal)), natural_cure_time, TIMER_STOPPABLE | TIMER_UNIQUE)
 
 /// What to do to the mob and or the limb on removal
 /datum/medical_condition/proc/on_removal(mob/living/carbon/victim, obj/item/bodypart/target_bodypart)
 	SHOULD_CALL_PARENT(TRUE)
+	if(victim)
+		victim.medical_conditions -= src
 	qdel(src)
 
 /// Connected to life processing to the owner mob, for condition progression, or constant effects
 /datum/medical_condition/proc/owner_process(mob/living/carbon/victim)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	if(!victim) // ?? Bad things are happening
+		on_removal()
+		return
+	if(!victim.get_bodypart(victim.medical_conditions[src]))
+		on_removal()
+		return

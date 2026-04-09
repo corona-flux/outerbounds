@@ -6912,6 +6912,7 @@
 #include "modular_bounds\character_customization\markings\preferences\markings.dm"
 #include "modular_bounds\datumed\condition.dm"
 #include "modular_bounds\datumed\condition_manager.dm"
+#include "modular_bounds\datumed\conditions\_wounds.dm"
 #include "modular_bounds\datumed\proc_overwrites\carbon_apply_damage.dm"
 #include "modular_bounds\datumed\proc_overwrites\life.dm"
 #include "modular_bounds\datumed\proc_overwrites\limb_receive_damage.dm"

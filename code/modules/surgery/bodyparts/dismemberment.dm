@@ -85,7 +85,7 @@
 		cavity_item = null
 
 ///limb removal. The "special" argument is used for swapping a limb with a new one without the effects of losing a limb kicking in.
-/* /obj/item/bodypart/proc/drop_limb(special, dismembered, move_to_floor = TRUE) // OUTERBOUNDS EDIT - HANDLED IN DATUMED
+/obj/item/bodypart/proc/drop_limb(special, dismembered, move_to_floor = TRUE)
 	if(!owner)
 		return
 	var/atom/drop_loc = owner.drop_location()
@@ -135,7 +135,7 @@
 			return
 		forceMove(drop_loc)
 
-	SEND_SIGNAL(phantom_owner, COMSIG_CARBON_POST_REMOVE_LIMB, src, special, dismembered) */
+	SEND_SIGNAL(phantom_owner, COMSIG_CARBON_POST_REMOVE_LIMB, src, special, dismembered)
 
 /**
  * get_mangled_state() is relevant for flesh and bone bodyparts, and returns whether this bodypart has mangled skin, mangled bone, or both (or neither i guess)
