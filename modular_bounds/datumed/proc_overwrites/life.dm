@@ -4,10 +4,7 @@
 	if(damageoverlaytemp)
 		damageoverlaytemp = 0
 		update_damage_hud()
-	for(var/datum/wound/wound as anything in all_wounds)
-		if(!wound.processes) // meh
-			continue
-		wound.handle_process(seconds_per_tick)
+	update_medical_conditions(seconds_per_tick)
 	if(HAS_TRAIT(src, TRAIT_STASIS))
 		. = ..()
 		reagents?.handle_stasis_chems(src, seconds_per_tick)

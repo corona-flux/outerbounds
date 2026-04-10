@@ -14,11 +14,27 @@
 	/// How much bleed per life tick does the wound actually cause, modified by severity
 	var/actual_bleeding_amount = 0
 
+/datum/medical_condition/wound/New(new_severity)
+	. = ..()
+	if(causes_bleeding)
+		max_bleeding_amount *= SEVERITY_2_PERCENT(new_severity)
+
+/datum/medical_condition/wound/on_application(mob/living/carbon/victim, obj/item/bodypart/target_bodypart)
+	. = ..()
+	actual_bleeding_amount = max_bleeding_amount
+
+/datum/medical_condition/wound/natural_healing()
+	. = ..()
+	if(causes_bleeding) // Wounds will stop bleeding before they fully heal
+		actual_bleeding_amount = max(round(actual_bleeding_amount - (max_bleeding_amount / 10), DAMAGE_PRECISION), 0)
+		if(actual_bleeding_amount <= 0)
+			causes_bleeding = FALSE
+
 /datum/medical_condition/wound/debug_damage_wound
 	name = "Debug Damage Wound"
 	desc = "Ow Ow Ow Owwwiie."
 	treatment_text = "Start praying."
 	natural_cure_time = 3 MINUTES
 	severity = CONDITION_SEVERITY_MAX
-	health_offset = -15
+	maximum_health_offset = -15
 	limb_independence = TRUE

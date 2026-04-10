@@ -3,3 +3,6 @@
 
 /// Maximum condition severity
 #define CONDITION_SEVERITY_MAX 10
+
+/// Converts a severity number to a multiplicable percentage
+#define SEVERITY_2_PERCENT(SEVERITY) ((SEVERITY) / 10)
