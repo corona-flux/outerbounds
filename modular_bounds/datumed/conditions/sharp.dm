@@ -3,7 +3,7 @@
 	desc = "The limb has been cut."
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 10 MINUTES
-	maximum_health_offset = 15
+	maximum_health_offset = -15
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.4
 
@@ -12,7 +12,7 @@
 	desc = "The limb has been scratched."
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 7 MINUTES
-	maximum_health_offset = 5
+	maximum_health_offset = -5
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.2
 
@@ -21,7 +21,7 @@
 	desc = "The limb has been bitten."
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 10 MINUTES
-	maximum_health_offset = 10
+	maximum_health_offset = -10
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.45
 
@@ -30,7 +30,7 @@
 	desc = "The limb has been stabbed."
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 13 MINUTES
-	maximum_health_offset = 10
+	maximum_health_offset = -10
 	causes_bleeding = TRUE
 	max_bleeding_amount = 1.5
 
@@ -39,7 +39,7 @@
 	desc = "The limb has been shot through with a projectile."
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 15 MINUTES
-	maximum_health_offset = 25
+	maximum_health_offset = -25
 	causes_bleeding = TRUE
 	max_bleeding_amount = 1.75
 
@@ -48,6 +48,6 @@
 	desc = "The limb has been shredded and mangled."
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 20 MINUTES
-	maximum_health_offset = 25
+	maximum_health_offset = -25
 	causes_bleeding = TRUE
 	max_bleeding_amount = 2.25

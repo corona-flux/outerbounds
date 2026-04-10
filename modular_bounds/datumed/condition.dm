@@ -20,11 +20,10 @@
 	var/severity_changes_name = TRUE
 	/// What we call different severity levels, needs to be in proper order like shown here
 	var/severity_name_thresholds = list(
-		1 = "Negligible",
-		3 = "Minor",
-		6 = "Moderate",
-		9 = "Severe",
-		10 = "Critical",
+		"Severe" = INFINITY,
+		"Moderate" = 6,
+		"Minor" = 3,
+		"Negligible" = 1,
 	)
 	/// The owner of this condition
 	var/mob/living/carbon/owner = null
@@ -38,8 +37,7 @@
 	var/limb_independence = FALSE
 
 /datum/medical_condition/New(new_severity)
-	. = ..()
-	severity = new_severity
+	severity = min(CONDITION_SEVERITY_MAX, new_severity)
 	starting_severity = severity
 	base_name = name
 
@@ -94,9 +92,11 @@
 	if(!severity_changes_name)
 		return
 	var/severity_append = null
-	for(var/iterator in severity_name_thresholds)
-		if(iterator > severity)
+	var/last_iterator_stored = null
+	for(var/iterator as anything in severity_name_thresholds)
+		if(severity <= severity_name_thresholds[iterator])
+			last_iterator_stored = iterator
 			continue
-		severity_append = severity_name_thresholds[iterator]
+		severity_append = last_iterator_stored
 		break
 	name = "[base_name] ([severity_append])"
