@@ -23,6 +23,11 @@
 	. = ..()
 	actual_bleeding_amount = max_bleeding_amount
 
+/datum/medical_condition/wound/owner_process(seconds_per_tick)
+	. = ..()
+	if(!causes_bleeding && actual_bleeding_amount)
+		actual_bleeding_amount = 0
+
 /datum/medical_condition/wound/natural_healing()
 	. = ..()
 	if(causes_bleeding) // Wounds will stop bleeding before they fully heal
