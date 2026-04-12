@@ -1,4 +1,6 @@
 /mob/living/carbon
+	/// Reference to the tgui panel that lets you view medical conditions
+	var/datum/conditions_panel/conditions_panel
 	/// List of all active conditions as well as what body zone they are tied to
 	var/list/medical_conditions = list()
 	/// List of conditions that can be treated and by what

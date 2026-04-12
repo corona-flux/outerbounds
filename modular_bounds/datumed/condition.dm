@@ -8,6 +8,10 @@
 	var/desc = "A medical condition of some kind, but it doesn't seem to do anything."
 	/// How to treat the condition, if at all
 	var/treatment_text = null
+	/// The fontawesome icon this will have in the conditions menu
+	var/condition_icon = FA_ICON_INFO_CIRCLE
+	/// List of alerts for the tgui conditions menu
+	var/list/condition_alerts_list = list()
 	/// How much of a treatment healing multiplier do we apply to the condition? >1 means faster healing
 	var/treatment_heal_multiplier = 1
 	/// If the condition should only last a certain amount of time, how long? In SECONDS
@@ -62,6 +66,10 @@
 		COOLDOWN_START(src, natural_healing_delay, natural_cure_time / 20)
 	update_condition_name()
 	health_offset = maximum_health_offset * SEVERITY_2_PERCENT(severity)
+	if(treatment_text)
+		condition_alerts_list |= list(
+			CONDITION_UI_TREATMENT = treatment_text
+		)
 
 /// What to do to the mob and or the limb on removal
 /datum/medical_condition/proc/on_removal()
@@ -84,6 +92,10 @@
 		natural_healing()
 		COOLDOWN_START(src, natural_healing_delay, natural_cure_time / 20)
 	health_offset = maximum_health_offset * SEVERITY_2_PERCENT(severity)
+	if(treatment_heal_multiplier != 1)
+		condition_alerts_list |= list(
+			CONDITION_UI_TREATMENT_QUALITY = "This condition has been treated to a quality of [treatment_heal_multiplier * 100], changing the rate it heals at."
+		)
 
 /// Called when the natural healing cooldown has finished
 /datum/medical_condition/proc/natural_healing()

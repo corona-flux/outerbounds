@@ -9,3 +9,14 @@
 
 /// If the wound is bleeding and bandages should work on it
 #define CONDITION_BANDAGABLE "bandagable_condition"
+
+/// For condition alerts that have no alert data
+#define CONDITION_ALERT_NO_DATA "condition_alert_no_data"
+/// For the tgui window, this wound has treatment info
+#define CONDITION_UI_TREATMENT "condition_ui_treatment"
+/// For the tgui window, this wound is currently bleeding
+#define CONDITION_UI_BLEEDING "condition_ui_bleeding"
+/// For the tgui window, this wound has been bandaged and is no longer bleeding
+#define CONDITION_UI_BANDAGED "condition_ui_bandaged"
+/// For the tgui window, this condition has increased healing factor thanks to treatment
+#define CONDITION_UI_TREATMENT_QUALITY "condition_ui_treatment_quality"
