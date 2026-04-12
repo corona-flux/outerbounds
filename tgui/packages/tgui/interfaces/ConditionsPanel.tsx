@@ -1,4 +1,10 @@
-import { Button, Dimmer, Section, LabeledList } from 'tgui-core/components';
+import {
+  Button,
+  Dimmer,
+  Section,
+  LabeledList,
+  ProgressBar,
+} from 'tgui-core/components';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -12,10 +18,13 @@ type Data = {
   conditions_right_leg: Array<ConditionData>;
   conditions_left_arm: Array<ConditionData>;
   conditions_right_arm: Array<ConditionData>;
+  felt_health: number;
+  max_health: number;
 };
 
 type ConditionData = {
   name: string;
+  desc: string;
   icon: string;
   alerts: { string }[];
   treatment: string;
@@ -99,12 +108,14 @@ export const ConditionsPanel = (props) => {
     conditions_right_leg = [],
     conditions_left_arm = [],
     conditions_right_arm = [],
+    felt_health,
+    max_health
   } = data;
+  const felt_health_percent = (felt_health / max_health)
   return (
     <Window title="Conditions Panel" width={400} height={500}>
       <Window.Content scrollable>
         <Section
-          maxHeight="32px"
           title="Status"
           buttons={
             <>
@@ -128,8 +139,20 @@ export const ConditionsPanel = (props) => {
               onClick={() => act('refresh')}
             />
             </>
-          }
-        />
+          }>
+          <LabeledList>
+            <LabeledList.Item label="Health">
+              <ProgressBar
+                value={felt_health_percent}
+                ranges={{
+                  good: [0.8, Infinity],
+                  average: [0.3, 0.8],
+                  bad: [-Infinity, 0.3],
+                }}
+              />
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
         <Section
           title="Whole Body"
           buttons={
@@ -154,6 +177,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -185,6 +210,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -216,6 +243,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -247,6 +276,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -278,6 +309,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -309,6 +342,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -340,6 +375,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -371,6 +408,8 @@ export const ConditionsPanel = (props) => {
                     key={condition.name}
                     label={condition.name}
                     labelColor={condition.colour}
+                    tooltip={condition.desc}
+                    className="candystripe"
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (

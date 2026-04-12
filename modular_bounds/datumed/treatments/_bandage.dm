@@ -31,6 +31,8 @@
 		picked_wound.condition_alerts_list |= list(
 			CONDITION_UI_BANDAGED = CONDITION_ALERT_NO_DATA
 		)
+		if(picked_wound.condition_alerts_list.Find(CONDITION_UI_BLEEDING))
+			picked_wound.condition_alerts_list -= CONDITION_UI_BLEEDING
 	picked_condition.treatment_heal_multiplier += treatment_quality
 	post_heal_effects(0, patient, user)
 	return TRUE

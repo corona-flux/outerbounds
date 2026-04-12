@@ -42,7 +42,8 @@
 	if(!causes_bleeding && actual_bleeding_amount)
 		actual_bleeding_amount = 0
 		bleeding_healed = TRUE
-		condition_alerts_list -= CONDITION_UI_BLEEDING
+		if(condition_alerts_list.Find(CONDITION_UI_BLEEDING))
+			condition_alerts_list -= CONDITION_UI_BLEEDING
 		var/list/treatable_conditions_list = owner.treatable_conditions[CONDITION_BANDAGABLE]
 		if(treatable_conditions_list.Find(src))
 			owner.treatable_conditions[CONDITION_BANDAGABLE] -= src

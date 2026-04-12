@@ -66,6 +66,7 @@
 	for(var/datum/medical_condition/condition as anything in mob_reference.medical_conditions)
 		var/list/condition_stats = list(
 			"name" = condition.name,
+			"desc" = condition.desc,
 			"icon" = condition.condition_icon,
 			"alerts" = condition.condition_alerts_list,
 			"treatment" = condition.treatment_text,
@@ -93,4 +94,6 @@
 	data["conditions_right_leg"] = conditions_right_leg
 	data["conditions_left_arm"] = conditions_left_arm
 	data["conditions_right_arm"] = conditions_right_arm
+	data["felt_health"] = mob_reference.health
+	data["max_health"] = mob_reference.maxHealth
 	return data
