@@ -9,6 +9,8 @@
 	limb_independence = FALSE
 	/// Does this wound cause bleeding?
 	var/causes_bleeding = FALSE
+	/// Did we start with bleeding that has been healed?
+	var/bleeding_healed = FALSE
 	/// How much bleed per life tick does the wound cause maximum
 	var/max_bleeding_amount = 0
 	/// How much bleed per life tick does the wound actually cause, modified by severity
@@ -22,15 +24,28 @@
 /datum/medical_condition/wound/on_application(mob/living/carbon/victim, obj/item/bodypart/target_bodypart)
 	. = ..()
 	actual_bleeding_amount = max_bleeding_amount
+	if(causes_bleeding)
+		victim.treatable_conditions[CONDITION_BANDAGABLE] |= src
+		victim.treatable_conditions[CONDITION_BANDAGABLE][src] = target_bodypart.body_zone
+
+/datum/medical_condition/wound/on_removal()
+	var/list/treatable_conditions_list = owner.treatable_conditions[CONDITION_BANDAGABLE]
+	if(treatable_conditions_list.Find(src))
+		owner.treatable_conditions[CONDITION_BANDAGABLE] -= src
+	return ..()
 
 /datum/medical_condition/wound/owner_process(seconds_per_tick)
 	. = ..()
 	if(!causes_bleeding && actual_bleeding_amount)
 		actual_bleeding_amount = 0
+		bleeding_healed = TRUE
+		var/list/treatable_conditions_list = owner.treatable_conditions[CONDITION_BANDAGABLE]
+		if(treatable_conditions_list.Find(src))
+			owner.treatable_conditions[CONDITION_BANDAGABLE] -= src
 
 /datum/medical_condition/wound/natural_healing()
 	. = ..()
 	if(causes_bleeding) // Wounds will stop bleeding before they fully heal
-		actual_bleeding_amount = max(round(actual_bleeding_amount - (max_bleeding_amount / 10), DAMAGE_PRECISION), 0)
+		actual_bleeding_amount = round(treatment_heal_multiplier * max(actual_bleeding_amount - (max_bleeding_amount / 10), 0), DAMAGE_PRECISION)
 		if(actual_bleeding_amount <= 0)
 			causes_bleeding = FALSE

@@ -6922,6 +6922,8 @@
 #include "modular_bounds\datumed\proc_overwrites\update_bleed.dm"
 #include "modular_bounds\datumed\proc_overwrites\update_health.dm"
 #include "modular_bounds\datumed\proc_overwrites\update_stat.dm"
+#include "modular_bounds\datumed\treatments\_bandage.dm"
+#include "modular_bounds\datumed\treatments\_stack_item.dm"
 #include "modular_bounds\keybinds\key_changes.dm"
 #include "modular_bounds\languages\code\language_datums.dm"
 #include "modular_bounds\languages\code\language menu\_language.dm"

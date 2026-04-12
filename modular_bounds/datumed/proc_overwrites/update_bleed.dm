@@ -1,4 +1,4 @@
-/obj/item/bodypart/proc/refresh_bleed_rate() // OUTERBOUNDS EDIT - Handled in DATUMED
+/obj/item/bodypart/proc/refresh_bleed_rate()
 	SIGNAL_HANDLER
 	SHOULD_NOT_OVERRIDE(TRUE)
 	var/old_bleed_rate = cached_bleed_rate

@@ -1,14 +1,16 @@
 /mob/living/carbon
 	/// List of all active conditions as well as what body zone they are tied to
 	var/list/medical_conditions = list()
-	/// List of limbs that we need to update the bleeding on at the end of processing wounds
-	var/list/limbs_with_conditions_to_update = list()
+	/// List of conditions that can be treated and by what
+	var/list/treatable_conditions = list(
+		CONDITION_BANDAGABLE = list(),
+	)
 
 /// Runs through all of the conditions on a mob and updates them
 /mob/living/carbon/proc/update_medical_conditions(seconds_per_tick)
 	for(var/datum/medical_condition/condition as anything in medical_conditions)
 		condition.owner_process(seconds_per_tick)
-	for(var/obj/item/bodypart/part as anything in limbs_with_conditions_to_update)
+	for(var/obj/item/bodypart/part as anything in bodyparts)
 		part.refresh_bleed_rate()
 	updatehealth()
 
@@ -34,34 +36,34 @@
 			if(damage_amount < 13)
 				condition_to_add = /datum/medical_condition/wound/bruise
 			else
-				condition_to_add = pick_weight(
+				condition_to_add = pick_weight(list(
 					/datum/medical_condition/wound/crack = 1,
 					/datum/medical_condition/wound/crushing = 3,
-				)
+				))
 		if(WOUND_SLASH)
 			if(damage_amount < 13)
-				condition_to_add = pick_weight(
+				condition_to_add = pick_weight(list(
 					/datum/medical_condition/wound/scratch = 3,
 					/datum/medical_condition/wound/cut = 2,
-				)
+				))
 			else
-				condition_to_add = pick_weight(
+				condition_to_add = pick_weight(list(
 					/datum/medical_condition/wound/scratch = 2,
 					/datum/medical_condition/wound/cut = 5,
 					/datum/medical_condition/wound/shred = 1,
-				)
+				))
 		if(WOUND_PIERCE)
 			if(damage_amount < 13)
-				condition_to_add = pick_weight(
+				condition_to_add = pick_weight(list(
 					/datum/medical_condition/wound/scratch = 3,
 					/datum/medical_condition/wound/cut = 2,
-				)
+				))
 			else
-				condition_to_add = pick_weight(
+				condition_to_add = pick_weight(list(
 					/datum/medical_condition/wound/scratch = 2,
 					/datum/medical_condition/wound/cut = 3,
 					/datum/medical_condition/wound/stab = 2,
-				)
+				))
 		if(WOUND_BURN)
 			condition_to_add = /datum/medical_condition/wound/burn
 	if(!condition_to_add)

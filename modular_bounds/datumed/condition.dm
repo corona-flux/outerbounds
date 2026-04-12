@@ -8,6 +8,8 @@
 	var/desc = "A medical condition of some kind, but it doesn't seem to do anything."
 	/// How to treat the condition, if at all
 	var/treatment_text = null
+	/// How much of a treatment healing multiplier do we apply to the condition? >1 means faster healing
+	var/treatment_heal_multiplier = 1
 	/// If the condition should only last a certain amount of time, how long? In SECONDS
 	var/natural_cure_time = null
 	/// Cooldown between times the severity should drop on this wound
@@ -85,7 +87,7 @@
 
 /// Called when the natural healing cooldown has finished
 /datum/medical_condition/proc/natural_healing()
-	severity = max(round(severity - (starting_severity / 20), DAMAGE_PRECISION), 0)
+	severity = round(treatment_heal_multiplier * max(severity - (starting_severity / 20),  0), DAMAGE_PRECISION)
 
 /// Updates the name of the datum depending on severity level
 /datum/medical_condition/proc/update_condition_name()

@@ -5,7 +5,7 @@
 	natural_cure_time = 10 MINUTES
 	maximum_health_offset = -15
 	causes_bleeding = TRUE
-	max_bleeding_amount = 0.4
+	max_bleeding_amount = 0.1
 
 /datum/medical_condition/wound/scratch
 	name = "Scratch"
@@ -14,7 +14,7 @@
 	natural_cure_time = 7 MINUTES
 	maximum_health_offset = -5
 	causes_bleeding = TRUE
-	max_bleeding_amount = 0.2
+	max_bleeding_amount = 0.05
 
 /datum/medical_condition/wound/bite
 	name = "Bite"
@@ -23,7 +23,7 @@
 	natural_cure_time = 10 MINUTES
 	maximum_health_offset = -10
 	causes_bleeding = TRUE
-	max_bleeding_amount = 0.45
+	max_bleeding_amount = 0.1125
 
 /datum/medical_condition/wound/stab
 	name = "Stab"
@@ -32,7 +32,7 @@
 	natural_cure_time = 13 MINUTES
 	maximum_health_offset = -10
 	causes_bleeding = TRUE
-	max_bleeding_amount = 1.5
+	max_bleeding_amount = 0.375
 
 /datum/medical_condition/wound/gunshot
 	name = "Gunshot"
@@ -41,7 +41,7 @@
 	natural_cure_time = 15 MINUTES
 	maximum_health_offset = -25
 	causes_bleeding = TRUE
-	max_bleeding_amount = 1.75
+	max_bleeding_amount = 0.375
 
 /datum/medical_condition/wound/shred
 	name = "Shredded"
@@ -50,4 +50,4 @@
 	natural_cure_time = 20 MINUTES
 	maximum_health_offset = -25
 	causes_bleeding = TRUE
-	max_bleeding_amount = 2.25
+	max_bleeding_amount = 0.5625

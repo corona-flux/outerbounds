@@ -5,4 +5,4 @@
 	natural_cure_time = 20 MINUTES
 	maximum_health_offset = -20
 	causes_bleeding = TRUE
-	max_bleeding_amount = 0.1
+	max_bleeding_amount = 0.025
