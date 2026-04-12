@@ -916,8 +916,8 @@
 	burn_dam = new_value
 
 //Returns total damage.
-/obj/item/bodypart/proc/get_damage()
-	return brute_dam + burn_dam
+/* /obj/item/bodypart/proc/get_damage()
+	return brute_dam + burn_dam */ // OUTERBOUNDS EDIT - Handled by DATUMED
 
 //Checks disabled status thresholds
 /obj/item/bodypart/proc/update_disabled(update_limbs = TRUE)

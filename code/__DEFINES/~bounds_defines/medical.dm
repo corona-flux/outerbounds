@@ -6,3 +6,6 @@
 
 /// Converts a severity number to a multiplicable percentage
 #define SEVERITY_2_PERCENT(SEVERITY) ((SEVERITY) / 10)
+
+/// If the wound is bleeding and bandages should work on it
+#define CONDITION_BANDAGABLE "bandagable_condition"
