@@ -27,6 +27,10 @@
 	if(istype(picked_condition, /datum/medical_condition/wound))
 		var/datum/medical_condition/wound/picked_wound = picked_condition
 		picked_wound.causes_bleeding = FALSE
+		picked_wound.bleeding_healed = TRUE
+		picked_wound.condition_alerts_list |= list(
+			CONDITION_UI_BANDAGED = CONDITION_ALERT_NO_DATA
+		)
 	picked_condition.treatment_heal_multiplier += treatment_quality
 	post_heal_effects(0, patient, user)
 	return TRUE

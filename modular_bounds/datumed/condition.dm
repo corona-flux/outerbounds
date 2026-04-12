@@ -8,6 +8,8 @@
 	var/desc = "A medical condition of some kind, but it doesn't seem to do anything."
 	/// How to treat the condition, if at all
 	var/treatment_text = null
+	/// What color is this condition in the tgui menu
+	var/menu_color = "#FFF"
 	/// The fontawesome icon this will have in the conditions menu
 	var/condition_icon = FA_ICON_INFO_CIRCLE
 	/// List of alerts for the tgui conditions menu
@@ -107,8 +109,13 @@
 		return
 	var/severity_append = null
 	var/last_iterator_stored = null
+	var/iterations = 0
 	for(var/iterator as anything in severity_name_thresholds)
-		if(severity <= severity_name_thresholds[iterator])
+		iterations++
+		if((iterations == length(severity_name_thresholds)))
+			severity_append = severity_name_thresholds[iterator]
+			break
+		if((severity <= severity_name_thresholds[iterator]))
 			last_iterator_stored = iterator
 			continue
 		severity_append = last_iterator_stored

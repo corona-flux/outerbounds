@@ -6,6 +6,7 @@
 	maximum_health_offset = -15
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.1
+	condition_icon = FA_ICON_SCISSORS
 
 /datum/medical_condition/wound/scratch
 	name = "Scratch"
@@ -15,6 +16,7 @@
 	maximum_health_offset = -5
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.05
+	condition_icon = FA_ICON_SCISSORS
 
 /datum/medical_condition/wound/bite
 	name = "Bite"
@@ -24,6 +26,7 @@
 	maximum_health_offset = -10
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.1125
+	condition_icon = FA_ICON_SCISSORS
 
 /datum/medical_condition/wound/stab
 	name = "Stab"
@@ -33,6 +36,7 @@
 	maximum_health_offset = -10
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.375
+	condition_icon = FA_ICON_SCISSORS
 
 /datum/medical_condition/wound/gunshot
 	name = "Gunshot"
@@ -42,6 +46,7 @@
 	maximum_health_offset = -25
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.375
+	condition_icon = FA_ICON_SCISSORS
 
 /datum/medical_condition/wound/shred
 	name = "Shredded"
@@ -51,3 +56,4 @@
 	maximum_health_offset = -25
 	causes_bleeding = TRUE
 	max_bleeding_amount = 0.5625
+	condition_icon = FA_ICON_SCISSORS

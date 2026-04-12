@@ -18,6 +18,8 @@ type ConditionData = {
   name: string;
   icon: string;
   alerts: { string }[];
+  treatment: string;
+  colour: string;
 };
 
 const ConditionAlerts = (props) => {
@@ -28,7 +30,8 @@ const ConditionAlerts = (props) => {
     return (
       <Button
         icon="grip"
-        iconColor='#8d8778'
+        iconColor="#8d8778"
+        color="transparent"
         tooltipPosition="right"
         tooltip={alert_data}
       />
@@ -38,7 +41,8 @@ const ConditionAlerts = (props) => {
     return (
       <Button
         icon="droplet"
-        iconColor='#9d0e0e'
+        iconColor="#9d0e0e"
+        color="transparent"
         tooltipPosition="right"
         tooltip={`
           This condition is causing bleeding! You will eventually bleed out if
@@ -51,7 +55,8 @@ const ConditionAlerts = (props) => {
     return (
       <Button
         icon="bandage"
-        iconColor='#8d8778'
+        iconColor="#8d8778"
+        color="transparent"
         tooltipPosition="right"
         tooltip={`
           This condition has been safely bandaged.
@@ -63,7 +68,8 @@ const ConditionAlerts = (props) => {
     return (
       <Button
         icon="kit-medical"
-        iconColor='#0abe94'
+        iconColor="#0abe94"
+        color="transparent"
         tooltipPosition="right"
         tooltip={alert_data}
       />
@@ -119,6 +125,7 @@ export const ConditionsPanel = (props) => {
               `}
               tooltipPosition="bottom-start"
               icon="repeat"
+              onClick={() => act('refresh')}
             />
             </>
           }
@@ -146,6 +153,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -158,6 +166,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -175,6 +184,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -187,6 +197,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -204,6 +215,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -216,6 +228,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -233,6 +246,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -245,6 +259,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -262,6 +277,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -274,6 +290,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -291,6 +308,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -303,6 +321,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -320,6 +339,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -332,6 +352,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -349,6 +370,7 @@ export const ConditionsPanel = (props) => {
                   <LabeledList.Item
                     key={condition.name}
                     label={condition.name}
+                    labelColor={condition.colour}
                   >
                     {!!condition.alerts &&
                       Object.keys(condition.alerts).map((condition_alert) => (
@@ -361,6 +383,7 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
+                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}

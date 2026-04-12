@@ -4,6 +4,7 @@
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 10 MINUTES
 	maximum_health_offset = -20
+	condition_icon = FA_ICON_BURST
 
 /datum/medical_condition/wound/crack
 	name = "Crack"
@@ -11,6 +12,7 @@
 	treatment_text = null // Todo: Healing
 	natural_cure_time = 15 MINUTES
 	maximum_health_offset = -15
+	condition_icon = FA_ICON_BURST
 
 /datum/medical_condition/wound/bruise
 	name = "Bruise"
@@ -23,3 +25,4 @@
 		"Stinging" = 6,
 		"Tender" = 3,
 	)
+	condition_icon = FA_ICON_BURST

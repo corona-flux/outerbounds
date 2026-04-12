@@ -37,9 +37,9 @@
 	qdel(src)
 
 /datum/conditions_panel/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, mob_reference, ui)
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, mob_reference, "ConditionsPanel")
+		ui = new(user, src, "ConditionsPanel")
 		ui.open()
 
 /datum/conditions_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -68,6 +68,8 @@
 			"name" = condition.name,
 			"icon" = condition.condition_icon,
 			"alerts" = condition.condition_alerts_list,
+			"treatment" = condition.treatment_text,
+			"colour" = condition.menu_color,
 		)
 		switch(mob_reference.medical_conditions[condition])
 			if(CONDITION_FULL_BODY)
