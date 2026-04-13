@@ -9,6 +9,8 @@
 
 /// If the wound is bleeding and bandages should work on it
 #define CONDITION_BANDAGABLE "bandagable_condition"
+/// Tracker for the generic "poisoning" condition
+#define CONDITION_POISONING "poisoning_condition"
 
 /// For condition alerts that have no alert data
 #define CONDITION_ALERT_NO_DATA "condition_alert_no_data"
@@ -20,3 +22,5 @@
 #define CONDITION_UI_BANDAGED "condition_ui_bandaged"
 /// For the tgui window, this condition has increased healing factor thanks to treatment
 #define CONDITION_UI_TREATMENT_QUALITY "condition_ui_treatment_quality"
+/// For the tgui window, this condition is fatal at maximum severity
+#define CONDITION_UI_MAX_SEVERITY_FATAL "condition_ui_max_severity_fatal"

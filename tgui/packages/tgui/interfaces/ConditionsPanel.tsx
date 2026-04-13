@@ -60,6 +60,20 @@ const ConditionAlerts = (props) => {
       />
     );
   }
+  if (alert === "condition_ui_max_severity_fatal") {
+    return (
+      <Button
+        icon="skull-crossbones"
+        iconColor="#9d0e0e"
+        color="transparent"
+        tooltipPosition="right"
+        tooltip={`
+          This condition is lethal if it reaches max severity! Be extremely
+          careful to not let it reach that point.
+        `}
+      />
+    );
+  }
   if (alert === "condition_ui_bandaged") {
     return (
       <Button
@@ -191,7 +205,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -224,7 +237,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -257,7 +269,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -290,7 +301,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -323,7 +333,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -356,7 +365,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -389,7 +397,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}
@@ -422,7 +429,6 @@ export const ConditionsPanel = (props) => {
                     <Button
                       color="transparent"
                       icon={condition.icon}
-                      tooltip={condition.treatment}
                     />
                   </LabeledList.Item>
                 ))}

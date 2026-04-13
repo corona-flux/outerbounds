@@ -6913,7 +6913,7 @@
 #include "modular_bounds\datumed\condition.dm"
 #include "modular_bounds\datumed\condition_manager.dm"
 #include "modular_bounds\datumed\condition_menu.dm"
-#include "modular_bounds\datumed\conditions\poisons\_poison.dm"
+#include "modular_bounds\datumed\conditions\poisons\poison.dm"
 #include "modular_bounds\datumed\conditions\wounds\_wounds.dm"
 #include "modular_bounds\datumed\conditions\wounds\blunt.dm"
 #include "modular_bounds\datumed\conditions\wounds\burn.dm"

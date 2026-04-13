@@ -6,6 +6,7 @@
 	/// List of conditions that can be treated and by what
 	var/list/treatable_conditions = list(
 		CONDITION_BANDAGABLE = list(),
+		CONDITION_POISONING = null,
 	)
 
 /// Runs through all of the conditions on a mob and updates them

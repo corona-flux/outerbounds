@@ -28,10 +28,10 @@
 	var/severity_changes_name = TRUE
 	/// What we call different severity levels, needs to be in proper order like shown here
 	var/severity_name_thresholds = list(
-		"Severe" = INFINITY,
-		"Moderate" = 6,
-		"Minor" = 3,
 		"Negligible" = 1,
+		"Minor" = 3,
+		"Moderate" = 6,
+		"Severe" = INFINITY,
 	)
 	/// The owner of this condition
 	var/mob/living/carbon/owner = null
@@ -43,6 +43,10 @@
 	var/health_offset = 0
 	/// If this can be applied to a limb independent of if that limb is actually there or not, for delimbing wounds
 	var/limb_independence = FALSE
+	/// If this condition can kill you at 10 severity
+	var/max_severity_fatal = FALSE
+	/// The message given if this condiiton kills you because of max severity
+	var/death_message = null
 
 /datum/medical_condition/New(new_severity)
 	severity = min(CONDITION_SEVERITY_MAX, new_severity)
@@ -72,6 +76,10 @@
 		condition_alerts_list |= list(
 			CONDITION_UI_TREATMENT = treatment_text
 		)
+	if(max_severity_fatal)
+		condition_alerts_list |= list(
+			CONDITION_UI_MAX_SEVERITY_FATAL = CONDITION_ALERT_NO_DATA
+		)
 
 /// What to do to the mob and or the limb on removal
 /datum/medical_condition/proc/on_removal()
@@ -98,10 +106,20 @@
 		condition_alerts_list |= list(
 			CONDITION_UI_TREATMENT_QUALITY = "This condition has been treated to a quality of [treatment_heal_multiplier * 100], changing the rate it heals at."
 		)
+	if(max_severity_fatal && (severity == CONDITION_SEVERITY_MAX) && (owner.stat != DEAD))
+		achieve_death()
 
 /// Called when the natural healing cooldown has finished
 /datum/medical_condition/proc/natural_healing()
 	severity = round(treatment_heal_multiplier * max(severity - (starting_severity / 20),  0), DAMAGE_PRECISION)
+
+/// Handles killing the owner if a condition manages to directly kill them
+/datum/medical_condition/proc/achieve_death()
+	if(death_message)
+		to_chat(owner, span_userdanger(death_message))
+	owner.investigate_log("has been killed by condition [src.name] that reached maximum severity.", INVESTIGATE_DEATHS)
+	owner.death()
+	severity -= severity / 5 // A little bit of reprieve for revival
 
 /// Updates the name of the datum depending on severity level
 /datum/medical_condition/proc/update_condition_name()
@@ -111,13 +129,7 @@
 	var/last_iterator_stored = null
 	var/iterations = 0
 	for(var/iterator as anything in severity_name_thresholds)
-		iterations++
-		if((iterations == length(severity_name_thresholds)))
+		if(severity <= severity_name_thresholds[iterator])
 			severity_append = severity_name_thresholds[iterator]
 			break
-		if((severity <= severity_name_thresholds[iterator]))
-			last_iterator_stored = iterator
-			continue
-		severity_append = last_iterator_stored
-		break
 	name = "[base_name] ([severity_append])"
